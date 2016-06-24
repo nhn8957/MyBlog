@@ -29,6 +29,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'protected_attributes'
 
+gem 'high_voltage', '~> 3.0.0'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
