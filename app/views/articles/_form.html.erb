@@ -1,0 +1,38 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <h5>Title</h5>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <h5>Body</h5>
+    <%= f.text_area :body %>
+  </div>
+  
+
+   <div class="field">
+  <h5><%= f.label :tag_list, "Tags (separated by commas)" %></h5>
+  <%= f.text_field :tag_list, value:@article.tag_list.to_s %>
+  </div>
+
+  <br>
+
+  <div class="field"><%=f.submit%></div>
+
+ 
+
+
+
+<% end %>

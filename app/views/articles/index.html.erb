@@ -1,0 +1,75 @@
+<div class="container">
+<br>
+
+      <nav class="navbar navbar-light bg-faded">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+          &#9776;
+        </button>
+        <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+          <a class="navbar-brand" href="#">MyBlog</a>
+          <ul class="nav navbar-nav">
+            <li class="nav-item active">
+              <%= link_to 'Home', articles_path, class:'btn btn-info'%><span class="sr-only">(current)</span>
+              <%= link_to 'New Article', new_article_path(@articles), class:'btn btn-info' %>
+              <%= link_to 'About', new_article_path(@articles), class:'btn btn-info'%>
+
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+
+
+
+
+<br>
+
+      <h1>MyBlog</h1>
+      <h5>My first Rails Application for CoderSchool</h5>
+
+      <p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-sm-8">
+
+
+
+  <% @articles.each do |article| %>
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title"><%= article.title %></h4>
+        <p class="card-text"><%= @markdown.render(article.body).html_safe %></p>
+        <p align="right"><i>Created on <%=article.created_at.in_time_zone("Hanoi").to_s(:short)%> GMT+7</i></p> 
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_article_path(article), class:'btn btn-info' %>
+        <%= link_to "Delete", article_path(article), method: :delete, class:'btn btn-info', data: { confirm: 'Are you sure you want to delete this item?'} %>
+      </div>
+
+
+      <div class="card-footer">
+        <p>Tags: <%= raw article.tag_list.map { |t| link_to t, tag_path(t), class: 'btn btn-info-outline' }.join('  ')   %></p>
+      </div>
+      </div>
+      <% end %>
+
+
+  <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    See tag list
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-block">
+      <% tag_cloud Article.tag_counts, %w{s m l} do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), class: 'btn btn-info-outline' %>
+      <% end %>
+    </div>
+  </div>
+
+
+ 
+
+  </div>
+</div>
+</div>
