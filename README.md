@@ -28,11 +28,12 @@ The following **optional** features are implemented:
 * [ ] User can leave a comment on a post.
 * [x] User can add "tags" to a post, and filter posts by tag. 
 
-> HINT: if you are unsure how to implement the Search feature, you can Google how to implement a simple search form. For example, one of the sites you will find is [this](http://www.jorgecoca.com/buils-search-form-ruby-rails/)
-
 The following **additional** features are implemented:
 
 * [x] User can see the time at which a post was created.
+* [x] The article details page is now also rendered with RedCarpet.
+* [x] User cannot leave the title or body of a post blank.
+* [x] There is now an 'About' page with information about the author.
 
 ## Video Walkthrough 
 
